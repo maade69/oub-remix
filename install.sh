@@ -44,7 +44,7 @@ mv sample_config.env config.env
 
 mkdir -p $PREFIX/var/lib/postgresql
 initdb $PREFIX/var/lib/postgresql
-pg_ctl -D $PREFIX/var/lib/postgresql start
+pg_ctlcluster -D $PREFIX/var/lib/postgresql start
 createdb botdb
 createuser botuser
 
