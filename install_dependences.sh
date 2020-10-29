@@ -32,10 +32,10 @@ sleep 5
 clear
 
 apt update && apt upgrade -y
-apt install clang curl git libxml2 make openssl postgresql python3 wget -y
+apt install clang curl git libxml2 make openssl postgresql python3 python3-pip wget -y
 
-pip install --upgrade pip setuptools
-pip install -r requirements.txt
+pip3 install --upgrade pip setuptools
+pip3 install -r requirements.txt
 
 mv sample_config.env config.env
 
