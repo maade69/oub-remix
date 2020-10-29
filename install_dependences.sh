@@ -32,29 +32,14 @@ sleep 5
 clear
 
 apt update && apt upgrade -y
-apt install clang curl git libcrypt libffi libiconv libjpeg* libjpeg-turbo libwebp libxml2 libxslt make ndk-sysroot openssl postgresql python readline wget zlib -y
-
-git clone https://github.com/sahyam2019/oub-remix.git
-cd oub-remix
+apt install clang curl git libxml2 make openssl postgresql python3 wget -y
 
 pip install --upgrade pip setuptools
 pip install -r requirements.txt
 
 mv sample_config.env config.env
 
-mkdir -p $PREFIX/var/lib/postgresql
-initdb $PREFIX/var/lib/postgresql
-pg_ctlcluster -D $PREFIX/var/lib/postgresql start
-createdb botdb
-createuser botuser
-
-cd ..
-echo "pg_ctl -D $PREFIX/var/lib/postgresql start" > startbot.sh
-echo "cd oub-remix" >> startbot.sh
-echo "python3 -m userbot" >> startbot.sh
-chmod 755 startbot.sh
-
 echo "Done."
-echo "Now edit config.env with nano or anything you want, then run the userbot with startbot.sh"
-echo "Please edit the db to postgresql://botuser:@localhost:5432/botdb"
+echo "Now edit config.env with nano or anything you want, then run the userbot with python3 -m userbot"
+echo "Please get you db from https://www.mongodb.com/ or smth else and edit the db (in config.env) to that value"
 echo "Good luck!"
